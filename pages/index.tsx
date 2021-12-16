@@ -35,6 +35,8 @@ export default function Home() {
     }
   }, []);
 
+  console.log(nfts);
+
   const MintMany = () => {
     const [mintCount, setMintCount] = useState(5);
 
@@ -63,9 +65,17 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div
+      style={{
+        color: "white",
+        fontFamily: "monospace",
+        backgroundColor:
+          "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)",
+        background: "#457fca",
+      }}
+    >
       <Head>
-        <title>next-candy-machine</title>
+        <title style={{ fontFamily: "fantasy" }}>FANF-candy-machine</title>
         <meta
           name="description"
           content="Simplified NextJs with typescript example app integrated with Metaplex's Candy Machine"
@@ -73,15 +83,53 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center min-h-screen mx-6">
+      <div className="flex flex-col min-h-screen mx-6">
         <Toaster />
-        <div className="flex items-center justify-between w-full mt-3">
-          <h1 className="text-2xl font-bold">next-candy-machine</h1>
+        <div
+          className="flex items-center justify-between w-full mt-3"
+          style={{ borderBottom: "1px solid white", padding: "0.5rem" }}
+        >
+          <h1
+            className="text-2xl font-bold"
+            style={{ fontFamily: "monospace" }}
+          >
+            FANF <span style={{ color: "#FFBDDD" }}>candy</span> machine
+          </h1>
+          {connected && (
+            <div
+              style={{
+                border: "1px solid white",
+                borderRadius: "4px",
+                padding: "1rem",
+                width: "fit-content",
+                display: "flex",
+                flexDirection: "row",
+              }}
+            >
+              <p
+                className="mr-auto text-sm"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <li className="font-bold ">
+                  Available: {nftsData.itemsRemaining}
+                </li>{" "}
+                <li className="font-bold ml-2">
+                  Minted: {nftsData.itemsRedeemed}
+                </li>{" "}
+                <li className="font-bold ml-2">
+                  Total: {nftsData.itemsAvailable}
+                </li>
+              </p>
+            </div>
+          )}
           <div className="flex items-center">
             {connected && (
               <div className="flex items-end mr-2">
-                <p className="text-xs text-gray-400">balance</p>
-                <p className="mx-1 font-bold leading-none">
+                <p className="text-xs">balance</p>
+                <p className=" font-bold mx-2 leading-none">
                   {balance.toFixed(2)}
                 </p>
                 <p
@@ -94,17 +142,23 @@ export default function Home() {
                 </p>
               </div>
             )}
-            <WalletMultiButton />
+            <WalletMultiButton
+              style={{
+                backgroundColor:
+                  "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)",
+                background: "#2a5298",
+              }}
+            />
           </div>
         </div>
-        {connected && (
-          <p className="mr-auto text-sm">
-            <span className="font-bold">Available/Minted/Total:</span>{" "}
-            {nftsData.itemsRemaining}/{nftsData.itemsRedeemed}/
-            {nftsData.itemsAvailable}
-          </p>
-        )}
-        <div className="flex items-start justify-center w-11/12 my-10">
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            marginTop: "2rem",
+          }}
+        >
           {connected ? (
             <>
               {new Date(mintStartDate).getTime() < Date.now() ? (
@@ -151,6 +205,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
