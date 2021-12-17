@@ -37,8 +37,6 @@ export default function Home() {
     }
   }, []);
 
-  console.log(useWallet());
-
   const MintMany = () => {
     const [mintCount, setMintCount] = useState(5);
 
@@ -164,7 +162,7 @@ export default function Home() {
         >
           <div style={{ width: "60%" }}>
             <p className="text-xl" style={{ textAlign: "center" }}>
-              {`Candy Machine is a system that manages fair mints. The minting
+              {`The FANF Candy Machine is a system that manages fair mints. The minting
               process starts and finishes at the same time for everyone. It
               won't accept your funds if there are no more NFTs to sell.`}
             </p>
