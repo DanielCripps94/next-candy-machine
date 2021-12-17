@@ -8,10 +8,14 @@ export default function AnNFT({ nft }: any) {
   }, []);
 
   return (
-    <div className="flex flex-col w-1/4 p-3 border-2 border-black">
+    <div
+      className="flex flex-col w-1/4 p-3 border-4 border-white"
+      style={{ width: "300px", height: "auto", borderRadius: "4px" }}
+    >
       <img src={nft.image} alt={nft.description || nft.name} />
-      <div className="flex justify-between mt-2">
+      <div className="flex justify-between mt-2" style={{display: 'felx', flexDirection: 'column', textAlign: 'center', }}>
         <p>{nft.name}</p>
+        <p>{nft.description}</p>
         <p className="font-bold">{nft.symbol}</p>
       </div>
     </div>
