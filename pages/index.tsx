@@ -26,7 +26,6 @@ export default function Home() {
 
   const [isLoading, nfts] = useWalletNfts();
 
-  console.log("nfts", nfts);
   const { connected } = useWallet();
 
   const [isMintLive, setIsMintLive] = useState(false);
@@ -39,6 +38,8 @@ export default function Home() {
 
   const MintMany = () => {
     const [mintCount, setMintCount] = useState(5);
+
+    console.log(isLoading);
 
     return (
       <>
@@ -242,7 +243,7 @@ export default function Home() {
                   </h2>
                 </>
               ) : (
-                <div className="flex mt-3 gap-x-2">
+                <div className="flex mt-3 gap-x-2" style={{flexWrap: 'wrap'}}>
                   {(nfts as any).map((nft: any, i: number) => {
                     return <AnNFT key={i} nft={nft} />;
                   })}

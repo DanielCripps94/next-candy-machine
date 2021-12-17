@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 export default function AnNFT({ nft }: any) {
   useEffect(() => {
-    console.log(nft);
   }, []);
 
   return (
